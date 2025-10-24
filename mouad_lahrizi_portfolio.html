@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouad Lahrizi - Industrial & Logistics Engineering Student</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #1e40af;
+            --light-blue: #3b82f6;
+            --dark-gray: #1f2937;
+            --medium-gray: #6b7280;
+            --light-gray: #f3f4f6;
+            --white: #ffffff;
+            --accent: #06b6d4;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            margin-top: 60px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: move 20s linear infinite;
+        }
+
+        @keyframes move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            opacity: 0.95;
+        }
+
+        .hero-text .location {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-pic {
+            width: 350px;
+            height: 350px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: 8px solid rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary-blue);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255,255,255,0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+        }
+
+        /* Profile Section */
+        .profile {
+            background: var(--light-gray);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+            text-align: center;
+            font-weight: 800;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--medium-gray);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .profile-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Experience Section */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--light-blue);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            grid-column: 1;
+            grid-row: 1;
+        }
+
+        .timeline-item:nth-child(even) .timeline-empty {
+            grid-column: 2;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 60px;
+            background: var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(1) .timeline-icon {
+            top: 0;
+        }
+
+        .company {
+            color: var(--primary-blue);
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .role {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .date {
+            color: var(--medium-gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .timeline-content li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary-blue);
+        }
+
+        /* Projects Section */
+        .projects {
+            background: var(--light-gray);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--light-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark-gray);
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .tech-tag {
+            background: var(--light-gray);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .skill-category h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        /* Languages & Soft Skills */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .info-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .info-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .language-item, .soft-skill-item {
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            background: var(--light-gray);
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-gray);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .profile-pic {
+                width: 250px;
+                height: 250px;
+                font-size: 80px;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+                padding-left: 60px;
+            }
+
+            .timeline-icon {
+                left: 30px !important;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 0.5rem;
+                display: none;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-left {
+            animation: slideInLeft 0.8s ease-out;
+        }
+
+        .animate-right {
+            animation: slideInRight 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">ML</div>
+            <ul>
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text animate-left">
+                    <h1>Mouad Lahrizi</h1>
+                    <p class="subtitle">Industrial & Logistics Engineering Student</p>
+                    <p class="location">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        Meknès, Morocco
+                    </p>
+                    <div class="contact-buttons">
+                        <a href="mailto:m.mouad.lahrizi@gmail.com" class="btn btn-primary">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                            </svg>
+                            Email Me
+                        </a>
+                        <a href="https://www.linkedin.com/in/mouad-lahrizi-6089a4311" target="_blank" class="btn btn-secondary">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                            </svg>
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image animate-right">
+                    <div class="profile-pic">👨‍💼</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section id="profile" class="profile">
+        <div class="container">
+            <h2 class="section-title">🧠 Profile</h2>
+            <p class="section-subtitle">Driven by Innovation & Technology</p>
+            <div class="profile-content">
+                <p>An engineering student passionate about <strong>Industry 4.0</strong>, <strong>computer vision</strong>, <strong>predictive maintenance</strong>, <strong>artificial intelligence</strong>, <strong>IIoT</strong>, and <strong>industrial automation</strong>. Dedicated to innovation and the digitalization of industrial systems.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">💼 Professional Experience</h2>
+            <p class="section-subtitle">Building the Future of Industry</p>
+            <div class="timeline">
+                <!-- Experience 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-icon">🏭</div>
+                        <h3 class="company">Centrale Danone – Hub Meknes</h3>
+                        <p class="role">End-of-Year Project Internship (PFA)</p>
+                        <p class="date">July 2025 – August 2025</p>
+                        <p><strong>Development of an Intelligent Warehouse Management System</strong></p>
+                        <ul>
+                            <li>Shelving automation using an optimized placement algorithm</li>
+                            <li>Centralized database for storage and preparation processes</li>
+                            <li>Real-time dashboard with KPIs, alerts (quarantine, best before end)</li>
+                            <li>Deployment as a desktop application (.exe)</li>
+                        </ul>
+                    </div>
+                    <div class="timeline-empty"></div>
+                </div>
+
+                <!-- Experience 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-empty"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-icon">⚙️</div>
+                        <h3 class="company">Saint Gobain Abrasifs Maroc – Meknes</h3>
+                        <p class="role">Application Internship</p>
+                        <p class="date">July 2024 – August 2024</p>
+                        <p><strong>Industrial IoT System Design for Furnace Areas</strong></p>
+                        <ul>
+                            <li>Study and selection of sensors for real-time monitoring</li>
+                            <li>TIA-PORTAL programming and embedded systems (S7-1200 PLC)</li>
+                            <li>Development of HMI interfaces for industrial process monitoring</li>
+                            <li>Real-time monitoring of cooking conditions and human interventions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">🧩 Key Projects</h2>
+            <p class="section-subtitle">Innovation Through Technology</p>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image">🥽</div>
+                    <div class="project-content">
+                        <h3 class="project-title">AR/VR Maintenance Training Simulator</h3>
+                        <p>Improving maintenance training using augmented and virtual reality technologies</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Unity</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">OpenCV</span>
+                            <span class="tech-tag">AR/VR</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image">🖨️</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Intelligent 3D Printer Quality Management</h3>
+                        <p>Quality and maintenance management of FDM 3D printers using computer vision</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Computer Vision</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">LabelImg</span>
+                            <span class="tech-tag">Object Detection</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image">🔧</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Predictive Maintenance System</h3>
+                        <p>System for industrial machine bearings using IIoT sensors and ML</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Machine Learning</span>
+                            <span class="tech-tag">IIoT Sensors</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Vibration Analysis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4 -->
+                <div class="project-card">
+                    <div class="project-image">📋</div>
+                    <div class="project-content">
+                        <h3 class="project-title">Task Management Web Application</h3>
+                        <p>Full-stack web application for managing tasks and projects</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5 -->
+                <div class="project-card">
+                    <div class="project-image">🌤️</div>
+                    <div class="project-content">
+                        <h3 class="project-title">ESP8266 Weather Station</h3>
+                        <p>IoT weather station with color TFT display and API integration</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">IoT</span>
+                            <span class="tech-tag">Arduino IDE</span>
+                            <span class="tech-tag">API</span>
+                            <span class="tech-tag">C</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">🛠️ Technical Skills</h2>
+            <p class="section-subtitle">Technology Stack & Expertise</p>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>💻 Programming Languages</h3>
+                    <ul class="skill-list">
+                        <li>Python</li>
+                        <li>SQL</li>
+                        <li>C</li>
+                        <li>Assembly Language</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🤖 AI & Data Analysis</h3>
+                    <ul class="skill-list">
+                        <li>TensorFlow</li>
+                        <li>Pandas & Numpy</li>
+                        <li>Power BI</li>
+                        <li>Matplotlib</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🏭 Industrial Analysis Tools</h3>
+                    <ul class="skill-list">
+                        <li>MSP (Manufacturing System Planning)</li>
+                        <li>VSM (Value Stream Mapping)</li>
+                        <li>FMEA (Failure Mode and Effects Analysis)</li>
+                        <li>Pareto Analysis</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>⚙️ Industrial Software & Simulation</h3>
+                    <ul class="skill-list">
+                        <li>Arena Simulation</li>
+                        <li>Odoo ERP</li>
+                        <li>Proteus</li>
+                        <li>Multisim</li>
+                        <li>LabView</li>
+                        <li>TIA-Portal</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>💾 Databases</h3>
+                    <ul class="skill-list">
+                        <li>MySQL</li>
+                        <li>SQLite</li>
+                        <li>Microsoft Access</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>🖥️ Operating Systems</h3>
+                    <ul class="skill-list">
+                        <li>Linux (Ubuntu, Debian, Kali)</li>
+                        <li>Windows</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Languages & Soft Skills Section -->
+    <section class="profile">
+        <div class="container">
+            <h2 class="section-title">🗣️ Languages & 🤝 Soft Skills</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Languages</h3>
+                    <div class="language-item">🇫🇷 French</div>
+                    <div class="language-item">🇬🇧 English</div>
+                    <div class="language-item">🇲🇦 Arabic (Native)</div>
+                </div>
+
+                <div class="info-card">
+                    <h3>Soft Skills</h3>
+                    <div class="soft-skill-item">👥 Teamwork</div>
+                    <div class="soft-skill-item">🧠 Analytical Mindset</div>
+                    <div class="soft-skill-item">🚀 Entrepreneurial Initiative</div>
+                    <div class="soft-skill-item">💡 Innovation</div>
+                    <div class="soft-skill-item">🎯 Leadership</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Mouad Lahrizi. All rights reserved.</p>
+            <p>Industrial & Logistics Engineering Student | Industry 4.0 Enthusiast</p>
+        </div>
+    </footer>
+</body>
+</html>
