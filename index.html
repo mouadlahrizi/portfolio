@@ -453,6 +453,29 @@
             margin-top: 1rem;
         }
 
+        .project-card-wide {
+            grid-column: 1 / -1;
+        }
+
+        .powerbi-embed {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 600 / 373.5;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .powerbi-embed iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
         .tech-tag {
             background: var(--light-bg);
             color: var(--primary-color);
@@ -865,6 +888,25 @@
             <p class="section-subtitle">Innovative solutions at the cutting edge of technology</p>
             
             <div class="projects-grid">
+                <div class="project-card project-card-wide fade-in">
+                    <div class="project-header">
+                        <h3>Retail Inventory & Sales Dashboard</h3>
+                    </div>
+                    <div class="project-body">
+                        <p>Interactive Power BI dashboard built on an online retail dataset from Kaggle to monitor sales performance and retails. Tracks total revenue, product count, and completed vs. canceled invoices, with a Pareto (80/20) analysis of revenue by stock code, year/quarter/month/day drill-down, and country-level filtering.</p>
+                        <div class="powerbi-embed">
+                            <iframe title="inventoryhealthcheck0" src="https://app.powerbi.com/view?r=eyJrIjoiM2E1ZGFmMWYtNDQ2YS00MGU0LTg4M2UtY2VmODZlZGYyMTlmIiwidCI6ImU5Y2EzNDVjLThhMjMtNDliNS04YjI3LWY1YzBiZTE0YjZkNCJ9" frameborder="0" allowFullScreen="true"></iframe>
+                        </div>
+                        <div class="project-tech">
+                            <span class="tech-tag">Power BI</span>
+                            <span class="tech-tag">DAX</span>
+                            <span class="tech-tag">Power Query</span>
+                            <span class="tech-tag">Data Visualization</span>
+                            <span class="tech-tag">Kaggle Dataset</span>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="project-card fade-in">
                     <div class="project-header">
                         <h3>Augmented Reality Maintenance Training</h3>
